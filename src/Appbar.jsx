@@ -2,22 +2,28 @@ import {Button,Typography} from "@mui/material";
 import { useEffect,useState } from "react";
 import axios from "axios";
 import {useNavigate} from "react-router-dom";
+import {userState} from "./store/atom/coursesAtom";
+import {useRecoilValue,useSetRecoilState} from "recoil";
 
 
 function Appbar(){
   const navigate=useNavigate();
-  const [userName,setuserName]=useState(null);
-  useEffect(()=>{
-    fetch("http://localhost:3000/admin/me",{
-      method:"GET",
-      headers:{
-          "authorization":"Bearer "+localStorage.getItem("token")
-      }
-  }).then((obj)=>{obj.json().then((data)=>{ 
-      if(data.username)
-      setuserName(data.username)})});
-  },[]);
+  // const [userName,setuserName]=useState(null);
+  // useEffect(()=>{
+  //   fetch("http://localhost:3000/admin/me",{
+  //     method:"GET",
+  //     headers:{
+  //         "authorization":"Bearer "+localStorage.getItem("token")
+  //     }
+  // }).then((obj)=>{obj.json().then((data)=>{ 
+  //     if(data.username)
+  //     setuserName(data.username)})});
+  // },[]);
 
+  //new code with state management
+
+  const userName=useRecoilValue(userState);
+  const setUser=useSetRecoilState(userState);
 
 
    if(userName){
@@ -30,9 +36,16 @@ function Appbar(){
           <div style={{display:'flex'}}>
             <Typography variant="h6">{userName}</Typography>
             <Button variant="contained" style={{marginRight:'5px'}} onClick={()=>{
-              localStorage.removeItem('token');
-              window.location="/";
+              navigate("/addCourse");
+            }}>Add Course</Button>
+            <Button variant="contained" style={{marginRight:'5px'}} onClick={()=>{
+              navigate("/courses");
+            }}>View Courses</Button>
+            <Button variant="contained" style={{marginRight:'5px'}} onClick={()=>{
+              localStorage.setItem('token',null);
+              setUser(null);
             }}>Logout</Button>
+            
           </div>
       </div>
       </>
