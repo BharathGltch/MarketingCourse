@@ -9,6 +9,7 @@ import Courses from './Courses';
 import { useSetRecoilState } from 'recoil';
 import {userState} from './store/atom/coursesAtom';
 import axios from "axios";
+import Course from './Course';
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Routes>
           <Route path="/courses" element={<Courses/>}/>
           <Route path="/addCourse" element={<AddCourse/>}/>
+          <Route path="/course/:courseId" element={<Course/>}/>
           <Route path="/signup" element={<SignUp/>}/>
           <Route path="/signin" element={<SignIn/>}/>
           </Routes>
