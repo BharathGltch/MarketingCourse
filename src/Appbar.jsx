@@ -23,6 +23,7 @@ function Appbar(){
   //new code with state management
 
   const userName=useRecoilValue(userState);
+  console.log(userName);
   const setUser=useSetRecoilState(userState);
 
 

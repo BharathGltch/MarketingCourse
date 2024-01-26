@@ -10,8 +10,8 @@ function SignIn(){
         <>
         <div style={{display:'flex',justifyContent:'center',alignContent:'center'}}>
             <Card variant="outlined" style={{marginTop:'100px',padding:'20px'}}>
-            <TextField variant="outlined" type={"text"} onChange={(e)=>{setUserName(e.target.value)}} label="Username" fullWidth="true"></TextField>
-            <TextField variant="outlined" type={"password"} onChange={(e)=>{setPassword(e.target.value)}} label="Password" fullWidth="true" style={{marginTop:"10px"}}></TextField>
+            <TextField variant="outlined" type={"text"} onChange={(e)=>{setUserName(e.target.value)}} label="Username" fullWidth></TextField>
+            <TextField variant="outlined" type={"password"} onChange={(e)=>{setPassword(e.target.value)}} label="Password" fullWidth style={{marginTop:"10px"}}></TextField>
             <div style={{display:'flex',justifyContent:'center',alignContent:'center',marginTop:'10px'}}>
             <Button variant="contained" size="large" onClick={()=>{
                     function callback1(response){

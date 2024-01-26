@@ -22,12 +22,16 @@ function App() {
       }
     });
 
+    console.log("The response is "+JSON.stringify(response));
+
        if(response.data.username){
+        console.log(response.data);
         setUserMail(response.data.username);
        }
   }
   
   init();
+  console.log("init called");
 
   return (
     <>
